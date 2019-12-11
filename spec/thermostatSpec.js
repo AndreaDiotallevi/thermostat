@@ -38,16 +38,40 @@ describe ("Thermostat", function() {
     for (var i = 0; i < 12; i++) {
       thermostat.up()
     }
-    console.log(thermostat.temperature())
     expect(function() { thermostat.up() }).toThrowError('You cannot go above 32 degrees when power saving mode is off')
   })
 
   it ("should have power saving mode on by default", function() {
-    expect(thermostat._isPowerSavingModeOn).toEqual(true)
+    expect(thermostat.isPowerSavingModeOn()).toEqual(true)
   })
 
   it ("should be able to reset the temperature to 20 degrees", function() {
     thermostat.reset()
     expect(thermostat.temperature()).toEqual(20)
   })
+
+  it ("Returns energy usage of 'low-usage' if temperature is below 18", function() {
+    for (var i = 0; i < 3; i++) {
+    thermostat.down()
+    }
+    expect(thermostat.energyUsage()).toEqual("low-usage")
+  })
+
+  it ("Returns energy usage of 'medium-usage' if temperature is between 18(included) and 25", function() {
+    for (var i = 0; i < 3; i++) {
+      thermostat.down()
+    }
+    for (var i = 0; i < 7; i++) {
+      thermostat.up()
+      expect(thermostat.energyUsage()).toEqual("medium-usage")
+    }
+  })
+
+  it ("Returns energy usage of 'high-usage' if temperature is above 25(included)", function() {
+    for (var i = 0; i < 5; i++) {
+    thermostat.up()
+    }
+    expect(thermostat.energyUsage()).toEqual("high-usage")
+  })
+
 })
