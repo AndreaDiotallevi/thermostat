@@ -1,65 +1,65 @@
 'use strict';
 
 function Thermostat() {
-  this._powerSavingMode = true;
-  this._MINIMUM_TEMPERATURE = 10;
-  this._DEFAULT_TEMPERATURE = 20;
-  this._temperature = this._DEFAULT_TEMPERATURE;
+  this.powerSavingMode = true;
+  this.MINIMUM_TEMPERATURE = 10;
+  this.DEFAULT_TEMPERATURE = 20;
+  this.temperature = this.DEFAULT_TEMPERATURE;
   this.MAX_LIMIT_PSM_ON = 25;
   this.MAX_LIMIT_PSM_OFF = 32;
   this.MEDIUM_ENERGY_USAGE_LIMIT = 18;
 }
 
 Thermostat.prototype.getCurrentTemperature = function() {
-  return this._temperature;
+  return this.temperature;
 }
 
 Thermostat.prototype.isPowerSavingModeOn = function() {
-  return this._powerSavingMode;
+  return this.powerSavingMode;
 }
 
 Thermostat.prototype.up = function() {
   if (this.isMaximumTemperature()) {
     return;
   }
-  this._temperature += 1;
+  this.temperature += 1;
 };
 
 Thermostat.prototype.down = function() {
   if (this.isMinimumTemperature()) {
     return;
   }
-  this._temperature -= 1;
+  this.temperature -= 1;
 };
 
 Thermostat.prototype.isMinimumTemperature = function() {
-  return this._temperature === this._MINIMUM_TEMPERATURE;
+  return this.temperature === this.MINIMUM_TEMPERATURE;
 };
 
 Thermostat.prototype.isMaximumTemperature = function() {
   if (this.isPowerSavingModeOn() === false) {
-    return this._temperature === this.MAX_LIMIT_PSM_OFF;
+    return this.temperature === this.MAX_LIMIT_PSM_OFF;
   }
-  return this._temperature === this.MAX_LIMIT_PSM_ON;
+  return this.temperature === this.MAX_LIMIT_PSM_ON;
 };
 
 Thermostat.prototype.switchPowerSavingModeOn = function() {
-  this._powerSavingMode = true;
+  this.powerSavingMode = true;
 };
 
 Thermostat.prototype.switchPowerSavingModeOff = function() {
-  this._powerSavingMode = false;
+  this.powerSavingMode = false;
 };
 
 Thermostat.prototype.resetTemperature = function() {
-  this._temperature = this._DEFAULT_TEMPERATURE;
+  this.temperature = this.DEFAULT_TEMPERATURE;
 };
 
 Thermostat.prototype.energyUsage = function() {
-  if (this._temperature < this.MEDIUM_ENERGY_USAGE_LIMIT ) {
+  if (this.temperature < this.MEDIUM_ENERGY_USAGE_LIMIT ) {
      return "low-usage" ;
   };
-  if (this._temperature >= this.MEDIUM_ENERGY_USAGE_LIMIT && this._temperature < this.MAX_LIMIT_PSM_ON) {
+  if (this.temperature >= this.MEDIUM_ENERGY_USAGE_LIMIT && this.temperature < this.MAX_LIMIT_PSM_ON) {
     return "medium-usage";
   };
   return "high-usage";
