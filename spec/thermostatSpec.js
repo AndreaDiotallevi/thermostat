@@ -15,7 +15,7 @@ describe ("Thermostat", function() {
     thermostat.up();
     expect(thermostat.getCurrentTemperature()).toEqual(21);
   });
-  
+
   it("decreases in temperature with down()", function() {
     thermostat.down();
     expect(thermostat.getCurrentTemperature()).toEqual(19);
@@ -42,6 +42,13 @@ describe ("Thermostat", function() {
     expect(thermostat.isPowerSavingModeOn()).toBe(false);
     thermostat.switchPowerSavingModeOn();
     expect(thermostat.isPowerSavingModeOn()).toBe(true);
+  });
+
+  it("makes sure that the temperature is 25 or lower when you switch the powersaving mode on", function() {
+    thermostat.switchPowerSavingModeOff();
+    for(var i=0; i<8; i++) thermostat.up();
+    thermostat.switchPowerSavingModeOn();
+    expect(thermostat.temperature).toEqual(25);
   });
 
   describe("when power saving mode is on", function() {
