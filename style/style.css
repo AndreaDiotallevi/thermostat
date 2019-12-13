@@ -1,7 +1,93 @@
+html {
+  width: 50%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
 .low-usage {
-    color: green;
+  color: green;
 }
 
 .high-usage {
-    color: red;
+  color: red;
+}
+
+body {
+  margin: 100px;
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: [col] 200px [col] 200px;
+  grid-template-rows: [row] auto [row] auto [row] auto;
+  text-align: center;
+}
+
+header {
+  grid-column: col / span 2;
+  grid-row: row;
+  border-radius: 10px 10px 0 0;
+}
+
+.enter-city-container {
+  margin: 5px 0;
+}
+
+#city-name {
+  /* border-radius: 10px; */
+}
+
+.temperature-controls {
+  grid-column: col / span 1;
+  grid-row: row 2;
+}
+
+#temperature, .weather-city-container {
+  color: white;
+}
+
+.energy-mode-controls {
+  grid-column: col 2 / span 1;
+  grid-row: row 2;
+}
+
+footer {
+  grid-column: col / span 2;
+  grid-row: row 3;
+  border-radius: 0 0 10px 10px;
+}
+
+#weather-city {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 20px
+}
+
+.box {
+  background-color: rgb(105, 125, 150);
+}
+
+button {
+  background-color: rgb(105, 125, 150);
+  border-color: rgb(105, 125, 150);
+  color: white;
+}
+
+#city-name {
+  border-color: rgb(105, 125, 150);
+  border-radius: 5px;
+  border-style: none;
+}
+
+#temperature-up {
+  /* background-image: url("../images/image-up.png") no-repeat; */
+  border: 3px solid red;
+  border-color: transparent transparent white transparent;
+  width: 30px;
+  height: 30px;
+  border-width: 0 15px 30px 15px;
+  padding: 0;
+  
 }

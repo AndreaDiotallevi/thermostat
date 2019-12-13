@@ -2,7 +2,7 @@ $(document).ready(function() {
   var thermostat = new Thermostat();
 
   function setTemperature() {
-    $("#temperature").text(thermostat.temperature);
+    $("#temperature").text(thermostat.temperature + " °C");
     $("#temperature").attr("class", thermostat.energyUsage());
   }
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
   $("#powersaving-on").click(function(event) {
     thermostat.switchPowerSavingModeOn();
-    $("#temperature").text(thermostat.temperature);
+    $("#temperature").text(thermostat.temperature + " °C");
     $("#power-saving-status").text("on");
   });
 
@@ -35,7 +35,8 @@ $(document).ready(function() {
   });
 
   $("#change-city").click(function(event) {
-    var cityName = document.getElementById("city-name").value;
+    var cityName = $('#city-name').val();
+    // var cityName = document.getElementById("city-name").value;
     getWeather(cityName);
   });
 
