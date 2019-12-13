@@ -31,10 +31,6 @@ header {
   margin: 5px 0;
 }
 
-#city-name {
-  /* border-radius: 10px; */
-}
-
 .temperature-controls {
   grid-column: col / span 1;
   grid-row: row 2;
