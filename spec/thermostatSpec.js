@@ -105,14 +105,14 @@ describe ("Thermostat", function() {
     });
   });
 
-  it("Returns energy usage of 'low-usage' if temperature is below 18", function() {
+  it("returns energy usage of 'low-usage' if temperature is below 18", function() {
     for (var i = 0; i < 3; i++) {
     thermostat.down();
     };
     expect(thermostat.energyUsage()).toEqual("low-usage");
   });
 
-  it("Returns energy usage of 'medium-usage' if temperature is between 18(included) and 25", function() {
+  it("returns energy usage of 'medium-usage' if temperature is between 18(included) and 25", function() {
     for (var i = 0; i < 3; i++) {
       thermostat.down();
     };
@@ -122,7 +122,7 @@ describe ("Thermostat", function() {
     };
   });
 
-  it("Returns energy usage of 'high-usage' if temperature is above 25(included)", function() {
+  it("returns energy usage of 'high-usage' if temperature is above 25(included)", function() {
     for (var i = 0; i < 5; i++) {
     thermostat.up();
     };

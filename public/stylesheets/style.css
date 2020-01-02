@@ -1,3 +1,7 @@
+* {
+  font-size: 16px;
+}
+
 html {
   width: 50%;
   margin: 0 auto;
@@ -36,7 +40,7 @@ header {
   grid-row: row 2;
 }
 
-#temperature, .weather-city-container {
+#temperature, .weather-city-container, span, p {
   color: white;
 }
 
@@ -78,12 +82,20 @@ button {
 }
 
 #temperature-up {
-  /* background-image: url("../images/image-up.png") no-repeat; */
   border: 3px solid red;
   border-color: transparent transparent white transparent;
   width: 30px;
   height: 30px;
   border-width: 0 15px 30px 15px;
   padding: 0;
-  
+}
+
+#temperature-down {
+  border: 3px solid red;
+  border-color: white transparent transparent transparent;
+  width: 30px;
+  height: 30px;
+  border-width: 30px 15px 0 15px;
+  padding: 0;
+  padding-bottom: 15px;
 }
